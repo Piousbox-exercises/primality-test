@@ -1,0 +1,13 @@
+
+<%= form_tag '/compute' do %>
+  <%= text_field_tag 'q' %>
+  <%= submit_tag 'Check primality' %>
+<% end %>
+
+<% if !@q.blank? %>
+<% begin %>
+  <h2>Is `<%= @q %>` prime?</h2>
+  <%= @answer %>
+<% rescue %>
+<% end %>
+<% end %>
