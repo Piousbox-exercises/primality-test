@@ -13,3 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready( function() {
+  $("input[type=submit]").click( function() {
+          val = $("#q").val();
+          $.ajax({    url: '/compute',
+                      dataType: 'json',
+                      data: {
+                        q: val
+                      },
+                      contentType: 'application/json',
+                      success: function(result) {
+                        answer = result ? 'True' : 'False' ;
+                        $(".answer").empty().append( answer );
+                      }
+                 });
+      });
+});

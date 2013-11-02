@@ -8,12 +8,11 @@ class WelcomeController < ApplicationController
   # computes if prime?
   def compute
     @q = params[:q]
-    # coprime = get_coprime( params[:q] )
     coprime = 2
     # integer `2` is a good enough co-prime to any integer.
     q = params[:q].to_i
 
-    if 1 == q
+    if 1 == q || 2 == q
       @answer = true
     elsif 0 == q % 2 
       @answer = false
@@ -26,13 +25,11 @@ class WelcomeController < ApplicationController
       end
     end
 
-    
-    render :action => :home
-  end
-
-  private 
-
-  def get_coprime a
+    respond_to do |format|
+      format.json do
+        render :json => @answer
+      end
+    end
   end
 
 end

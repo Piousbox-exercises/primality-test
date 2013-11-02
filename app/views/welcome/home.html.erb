@@ -1,13 +1,11 @@
 
-<%= form_tag '/compute' do %>
+<div class='question'>
+<h1> Is
+<%= form_tag '/compute', :onsubmit => "return false;" do %>
   <%= text_field_tag 'q' %>
-  <%= submit_tag 'Check primality' %>
+  <%= submit_tag 'prime?' %>
 <% end %>
+</h1>
+</div>
 
-<% if !@q.blank? %>
-<% begin %>
-  <h2>Is `<%= @q %>` prime?</h2>
-  <%= @answer %>
-<% rescue %>
-<% end %>
-<% end %>
+<div class='answer'></div>
